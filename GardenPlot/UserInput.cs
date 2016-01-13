@@ -12,8 +12,6 @@ namespace GardenPlot
     {
         Reader reader;
         Dictionary<string, List<int>> plotsdictionary;
-        string plotchoice;
-        string input;
         PlotOverlap PlotOverlap;
         TotalFence TotalFence;
         MinFence MinFence;
@@ -22,14 +20,7 @@ namespace GardenPlot
 
         public UserInput()
         {
-            Console.WriteLine("1, 2, 3, 4, or 5.");
-            plotchoice = Console.ReadLine();
-            //Console.WriteLine("Input where the source file is.");
-            input = "plotfiles/plots.txt";// Console.ReadLine();
-            //Console.WriteLine("Input where the destination file will be.");
-            //string output = Console.ReadLine();
             reader = new Reader();
-            plotsdictionary = reader.reader(input);
             PlotOverlap = new PlotOverlap();
             TotalFence = new TotalFence();
             MinFence = new MinFence();
@@ -37,51 +28,39 @@ namespace GardenPlot
             Rotate = new Rotate();
         }
 
-        public void Input()
+        public void Input(string[] args)
         {
-            
-            if (plotchoice == "1")
+            plotsdictionary = reader.reader(args[1]);
+            if (args[0] == "1")
             {
-                List<string> output = PlotOverlap.CheckAllOverlaps(plotsdictionary);
-                PlotOverlap.Writer("plotfiles/overlapping_plots.txt", output);
+                List<string> total = PlotOverlap.CheckAllOverlaps(plotsdictionary);
+                PlotOverlap.Writer(args[2], total);
             }
 
-            if (plotchoice == "2")
+            if (args[0] == "2")
             {
                 int total = TotalFence.GetTotalFence(plotsdictionary);
-                TotalFence.Writer("plotfiles/total_fencing.txt", total);
+                TotalFence.Writer(args[2], total);
             }
 
-            if (plotchoice == "3")
+            if (args[0] == "3")
             {
                 int total = MinFence.GetMinimumFence(plotsdictionary);
-                MinFence.Writer("plotfiles/minimum_fencing.txt", total);
+                MinFence.Writer(args[2], total);
             }
 
-            if (plotchoice == "4")
+            if (args[0] == "4")
             {
                 float totalfertilizer = TotalFertilizer.GetTotalFertilizer(plotsdictionary);
-                TotalFertilizer.Writer("plotfiles/total_fertilizer.txt", totalfertilizer);
+                TotalFertilizer.Writer(args[2], totalfertilizer);
             }
 
-            if (plotchoice == "5")
+            if (args[0] == "5")
             {
-                Console.WriteLine("Enter the desired rotation.");
-                Console.WriteLine("This will rotate Counter-Clockwise.");
-                Console.WriteLine("Must be 90, 180, or 270.");
-                string rotate = Console.ReadLine();
+                string rotate = args[2];
                 int rotatenumber = Convert.ToInt32(rotate);
                 Dictionary<string, List<int>> rotateit = Rotate.RotateAll(rotate, plotsdictionary);
-                Rotate.Writer("plotfiles/rotated_plots.txt", rotateit);
-            }
-
-            if (plotchoice == "6")
-            {
-                foreach (KeyValuePair<string, List<int>> pair in plotsdictionary)
-                {
-                    Console.WriteLine("{0} - {1},{2} - {3},{4}", pair.Key, pair.Value[0], pair.Value[1], pair.Value[2], pair.Value[3]);
-                }
-                Console.Read();
+                Rotate.Writer(args[3], rotateit);
             }
         }
     }

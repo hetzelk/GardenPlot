@@ -16,10 +16,10 @@ namespace GardenConsole
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
             UserInput user = new UserInput();
-            user.Input();
+            user.Input(args);
         }
     }
 }
