@@ -48,36 +48,42 @@ namespace GardenPlot
             
             if (plotchoice == "1")
             {
-                List<string> output = PlotOverlap.checkOverlap(plotsdictionary);
-                PlotOverlap.writer("plotfiles/overlapping_plots.txt", output);
+                List<string> output = PlotOverlap.CheckOverlap(plotsdictionary);
+                PlotOverlap.Writer("plotfiles/overlapping_plots.txt", output);
             }
 
             if (plotchoice == "2")
             {
-                int total = TotalFence.getTotalFence(plotsdictionary);
-                TotalFence.writer("plotfiles/total_fencing.txt", total);
+                int total = TotalFence.GetTotalFence(plotsdictionary);
+                TotalFence.Writer("plotfiles/total_fencing.txt", total);
             }
 
             if (plotchoice == "3")
             {
-                int total = MinFence.getTotalFence(plotsdictionary);
-                MinFence.writer("plotfiles/minimum_fencing.txt", total);
+                int total = MinFence.GetTotalFence(plotsdictionary);
+                MinFence.Writer("plotfiles/minimum_fencing.txt", total);
             }
 
             if (plotchoice == "4")
             {
                 float totalfertilizer = TotalFertilizer.GetTotalFertilizer(plotsdictionary);
-                TotalFertilizer.writer("plotfiles/total_fertilizer.txt", totalfertilizer);
+                TotalFertilizer.Writer("plotfiles/total_fertilizer.txt", totalfertilizer);
             }
 
             if (plotchoice == "5")
             {
                 Console.WriteLine("Enter the desired rotation.");
+                Console.WriteLine("This will rotate Counter-Clockwise.");
                 Console.WriteLine("Must be 90, 180, or 270.");
                 string rotate = Console.ReadLine();
-
+                int rotatenumber = Convert.ToInt32(rotate);
+                if(rotatenumber !=90 || rotatenumber != 180 || rotatenumber != 270)
+                    {
+                    Console.WriteLine("Try Agian - Must be 90, 180, or 270.");
+                    rotate = Console.ReadLine();
+                    }
                 Dictionary<string, List<int>> rotateit = Rotate.RotateAll(rotate, plotsdictionary);
-                //Rotate.writer("plotfiles/rotated_plots.txt", rotateit);
+                Rotate.Writer("plotfiles/rotated_plots.txt", rotateit);
             }
 
             if (plotchoice == "6")

@@ -9,17 +9,16 @@ namespace GardenPlot
 {
     public class PlotOverlap//1
     {
-        public List<string> checkOverlap(Dictionary<string, List<int>> dictionaryplots)
+        public List<string> CheckOverlap(Dictionary<string, List<int>> dictionaryplots)
         {
             List<string> plotoverlaps = new List<string>();
             plotoverlaps.Add("");
             return plotoverlaps;
         }
 
-        public void writer(string output, List<string> plots)
+        public void Writer(string output, List<string> plots)
         {
-            string path2 = output;
-            using (StreamWriter sw = new StreamWriter(path2))
+            using (StreamWriter sw = new StreamWriter(output))
             {
                 sw.WriteLine("overlap "+plots);
             }

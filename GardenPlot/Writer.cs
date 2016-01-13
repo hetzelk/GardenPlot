@@ -9,9 +9,8 @@ namespace GardenPlot
 {
     public class Writer
     {
-        public void writer()
+        public void writer(string path2)
         {
-            string path2 = "C:/Users/Keith Hetzel/Desktop/4. dev code camp/C#/GardenPlot/total_fencing.txt";
             using (StreamWriter sw = new StreamWriter(path2))
             {
                 sw.WriteLine("total_fencing");

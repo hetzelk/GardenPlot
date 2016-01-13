@@ -9,19 +9,28 @@ namespace GardenPlot
 {
     public class TotalFence//2
     {
-        public int getTotalFence(Dictionary<string, List<int>> dictionaryplots)
+        public int GetTotalFence(Dictionary<string, List<int>> dictionaryplots)
         {
-            int firsthalf = 1;//w * 2
-            int secondhalf = 1;//h * 2
+            int total = 0;
+            foreach(KeyValuePair<string, List<int>> pair in dictionaryplots)
+            {
+                int eachtotal = GetEachFence(pair.Value[2], pair.Value[3]);
+                total += eachtotal;
+            }
+            return total;
+        }
+
+        public int GetEachFence(int w, int h)
+        {
+            int firsthalf = w * 2;
+            int secondhalf = h * 2;
             int totalcurrentfence = firsthalf + secondhalf;
-            Console.WriteLine(totalcurrentfence);
             return totalcurrentfence;
         }
 
-        public void writer(string output, int total)
+        public void Writer(string output, int total)
         {
-            string path2 = output;
-            using (StreamWriter sw = new StreamWriter(path2))
+            using (StreamWriter sw = new StreamWriter(output))
             {
                 sw.WriteLine("total fencing = "+ total);
             }

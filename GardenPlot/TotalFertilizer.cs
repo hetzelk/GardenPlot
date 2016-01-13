@@ -14,23 +14,22 @@ namespace GardenPlot
             float total = 0;
             foreach(KeyValuePair<string, List<int>> index in dictionaryplots)
             {
-                float eachamount = getFertilizerAmount(index.Value[2], index.Value[3]);
+                float eachamount = GetFertilizerAmount(index.Value[2], index.Value[3]);
                 total += eachamount;
             }
             return total;
         }
 
-        public float getFertilizerAmount(int x, int y)
+        public float GetFertilizerAmount(int x, int y)
         {
             int sqft = x * y;
             int fertilizer = sqft / 2;
             return fertilizer;
         }
 
-        public void writer(string output, float totalfert)
+        public void Writer(string output, float totalfert)
         {
-            string path2 = output;
-            using (StreamWriter sw = new StreamWriter(path2))
+            using (StreamWriter sw = new StreamWriter(output))
             {
                 sw.WriteLine("total fertilizer needed = "+ totalfert);
             }
