@@ -7,7 +7,7 @@ using System.IO;
 
 namespace GardenPlot
 {
-    public class TotalFertilizer//4
+    public class TotalFertilizer
     {
         public float GetTotalFertilizer(Dictionary<string, List<int>> dictionaryPlots)
         {

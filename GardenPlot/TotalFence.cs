@@ -7,7 +7,7 @@ using System.IO;
 
 namespace GardenPlot
 {
-    public class TotalFence//2
+    public class TotalFence
     {
         public int GetTotalFence(Dictionary<string, List<int>> dictionaryPlots)
         {

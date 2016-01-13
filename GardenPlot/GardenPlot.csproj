@@ -48,7 +48,6 @@
     <Compile Include="TotalFence.cs" />
     <Compile Include="TotalFertilizer.cs" />
     <Compile Include="UserInput.cs" />
-    <Compile Include="Writer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

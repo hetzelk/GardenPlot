@@ -7,7 +7,7 @@ using System.IO;
 
 namespace GardenPlot
 {
-    public class MinFence//3
+    public class MinFence
     {
         Dictionary<string, List<int>> fullPlotDictionary;
         List<int> finalMaxPlots;

@@ -12,25 +12,24 @@ namespace GardenPlot
         public Dictionary<string, List<int>> reader(string input)
         {
             Dictionary<string, List<int>> plots = new Dictionary<string, List<int>>();
-            string path1 = input;
             int counter = 0;
             string line;
-            string countkey;
+            string countKey;
 
-            if (File.Exists(path1))
+            if (File.Exists(input))
             {
-                using (StreamReader file = new StreamReader(path1))
+                using (StreamReader file = new StreamReader(input))
                 {
                     while ((line = file.ReadLine()) != null)
                     {
-                        List<int> coordinateslist = new List<int>();
+                        List<int> coordinatesList = new List<int>();
                         string[] letters = line.Split(',');
                         foreach(string c in letters)
                         {
-                            coordinateslist.Add(Convert.ToInt32(c));
+                            coordinatesList.Add(Convert.ToInt32(c));
                         }
-                        countkey = String.Format("{0}", counter);
-                        plots.Add(countkey, coordinateslist);
+                        countKey = String.Format("{0}", counter);
+                        plots.Add(countKey, coordinatesList);
                         counter++;
                     }
                     file.Close();
@@ -39,7 +38,6 @@ namespace GardenPlot
             }
             else
             {
-                Console.WriteLine("This File doesn't exist.");
                 return plots;
             }
         }

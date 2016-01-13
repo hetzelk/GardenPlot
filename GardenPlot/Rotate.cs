@@ -7,7 +7,7 @@ using System.IO;
 
 namespace GardenPlot
 {
-    public class Rotate//5
+    public class Rotate
     {
         List<string> rotatedPlots;
         int newRotate;

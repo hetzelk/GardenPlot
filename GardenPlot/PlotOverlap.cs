@@ -7,7 +7,7 @@ using System.IO;
 
 namespace GardenPlot
 {
-    public class PlotOverlap//1
+    public class PlotOverlap
     {
         Dictionary<string, List<int>> fullPlots;
 
