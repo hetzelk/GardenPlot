@@ -6,12 +6,6 @@ using System.Threading.Tasks;
 using System.IO;
 using GardenPlot;
 
-/*
-2,2,10,20
-100,10,5,5
-5, 5, 10, 10
-*/
-
 namespace GardenPlot
 {
     public class UserInput
@@ -48,7 +42,7 @@ namespace GardenPlot
             
             if (plotchoice == "1")
             {
-                List<string> output = PlotOverlap.CheckOverlap(plotsdictionary);
+                List<string> output = PlotOverlap.CheckAllOverlaps(plotsdictionary);
                 PlotOverlap.Writer("plotfiles/overlapping_plots.txt", output);
             }
 
@@ -60,7 +54,7 @@ namespace GardenPlot
 
             if (plotchoice == "3")
             {
-                int total = MinFence.GetIndividuals(plotsdictionary);
+                int total = MinFence.GetMinimumFence(plotsdictionary);
                 MinFence.Writer("plotfiles/minimum_fencing.txt", total);
             }
 
@@ -77,11 +71,6 @@ namespace GardenPlot
                 Console.WriteLine("Must be 90, 180, or 270.");
                 string rotate = Console.ReadLine();
                 int rotatenumber = Convert.ToInt32(rotate);
-                if(rotatenumber !=90 || rotatenumber != 180 || rotatenumber != 270)
-                    {
-                    Console.WriteLine("Try Agian - Must be 90, 180, or 270.");
-                    rotate = Console.ReadLine();
-                    }
                 Dictionary<string, List<int>> rotateit = Rotate.RotateAll(rotate, plotsdictionary);
                 Rotate.Writer("plotfiles/rotated_plots.txt", rotateit);
             }

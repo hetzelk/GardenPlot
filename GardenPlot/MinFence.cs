@@ -17,7 +17,7 @@ namespace GardenPlot
             FinalMaxPlots = new List<int>();
         }
 
-        public int GetIndividuals(Dictionary<string, List<int>> dictionaryplots)
+        public int GetMinimumFence(Dictionary<string, List<int>> dictionaryplots)
         {
             fullplotdictionary = CreateFullPlotDictionary(dictionaryplots);
             FinalMaxPlots = GetParameters(fullplotdictionary);
@@ -35,8 +35,6 @@ namespace GardenPlot
                 List<int> plotlist = new List<int>();
                 xwidth = pair.Value[0] + pair.Value[2];
                 yheight = pair.Value[1] + pair.Value[3];
-                Console.WriteLine(xwidth);
-                Console.WriteLine(yheight);
                 plotlist.Add(pair.Value[0]);
                 plotlist.Add(pair.Value[1]);
                 plotlist.Add(xwidth);
