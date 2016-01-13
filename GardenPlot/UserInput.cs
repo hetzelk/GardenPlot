@@ -60,7 +60,7 @@ namespace GardenPlot
 
             if (plotchoice == "3")
             {
-                int total = MinFence.GetTotalFence(plotsdictionary);
+                int total = MinFence.GetIndividuals(plotsdictionary);
                 MinFence.Writer("plotfiles/minimum_fencing.txt", total);
             }
 

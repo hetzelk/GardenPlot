@@ -20,7 +20,7 @@ namespace GardenPlot
         {
             using (StreamWriter sw = new StreamWriter(output))
             {
-                sw.WriteLine("overlap "+plots);
+                sw.WriteLine("overlap {0}", plots);
             }
         }
     }
