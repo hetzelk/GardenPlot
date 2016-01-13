@@ -9,84 +9,84 @@ namespace GardenPlot
 {
     public class Rotate//5
     {
-        List<string> rotatedplots;
-        int newrotate;
-        Dictionary<string, List<int>> rotateddictionary;
+        List<string> rotatedPlots;
+        int newRotate;
+        Dictionary<string, List<int>> rotatedDictionary;
 
         public Rotate()
         {
-            rotatedplots = new List<string>();
-            rotateddictionary = new Dictionary<string, List<int>>();
+            rotatedPlots = new List<string>();
+            rotatedDictionary = new Dictionary<string, List<int>>();
         }
 
-        public Dictionary<string, List<int>> RotateAll(string rotate, Dictionary<string, List<int>> dictionaryplots)
+        public Dictionary<string, List<int>> RotateAll(string rotate, Dictionary<string, List<int>> dictionaryPlots)
         {
-            newrotate = Convert.ToInt32(rotate);
+            newRotate = Convert.ToInt32(rotate);
             int counter = 0;
-            foreach (KeyValuePair<string, List<int>> index in dictionaryplots)
+            foreach (KeyValuePair<string, List<int>> index in dictionaryPlots)
             {
-                List<int> eachrotate = RotateEach(index.Value[0], index.Value[1], index.Value[2], index.Value[3]);
-                string counterstring = String.Format("{0}", counter);
-                rotateddictionary.Add(counterstring, eachrotate);
+                List<int> eachRotate = RotateEach(index.Value[0], index.Value[1], index.Value[2], index.Value[3]);
+                string counterString = String.Format("{0}", counter);
+                rotatedDictionary.Add(counterString, eachRotate);
                 counter++;
             }
-            return rotateddictionary;
+            return rotatedDictionary;
         }
 
         public List<int> RotateEach(int x, int y, int w, int h)
         {
-            int newx;
-            int newy;
-            int neww;
-            int newh;
+            int newX;
+            int newY;
+            int newW;
+            int newH;
 
-            List<int> eachrotate = new List<int>();
-            if (newrotate == 90)
+            List<int> eachRotate = new List<int>();
+            if (newRotate == 90)
             {
-                newx = x;
-                newy = y - w;
-                neww = h;
-                newh = w;
-                eachrotate.Add(newx);
-                eachrotate.Add(newy);
-                eachrotate.Add(neww);
-                eachrotate.Add(newh);
-                return eachrotate;
+                newX = x;
+                newY = y - w;
+                newW = h;
+                newH = w;
+                eachRotate.Add(newX);
+                eachRotate.Add(newY);
+                eachRotate.Add(newW);
+                eachRotate.Add(newH);
+                return eachRotate;
             }
-            if (newrotate == 180)
+            if (newRotate == 180)
             {
-                newx = x - w;
-                newy = y - h;
-                neww = w;
-                newh = h;
-                eachrotate.Add(newx);
-                eachrotate.Add(newy);
-                eachrotate.Add(neww);
-                eachrotate.Add(newh);
-                return eachrotate;
+                newX = x - w;
+                newY = y - h;
+                newW = w;
+                newH = h;
+                eachRotate.Add(newX);
+                eachRotate.Add(newY);
+                eachRotate.Add(newW);
+                eachRotate.Add(newH);
+                return eachRotate;
             }
-            if (newrotate == 270)
+            if (newRotate == 270)
             {
-                newx = x - w;
-                newy = y;
-                neww = h;
-                newh = w;
-                eachrotate.Add(newx);
-                eachrotate.Add(newy);
-                eachrotate.Add(neww);
-                eachrotate.Add(newh);
-                return eachrotate;
+                newX = x - w;
+                newY = y;
+                newW = h;
+                newH = w;
+                eachRotate.Add(newX);
+                eachRotate.Add(newY);
+                eachRotate.Add(newW);
+                eachRotate.Add(newH);
+                return eachRotate;
             }
-            return eachrotate;
+            return eachRotate;
         }
-        public void Writer(string output, Dictionary<string, List<int>> dictionaryplots)
+        public void Writer(string output, Dictionary<string, List<int>> dictionaryPlots)
         {
             using (StreamWriter sw = new StreamWriter(output))
             {
-                foreach (KeyValuePair<string, List<int>> pair in dictionaryplots)
+                foreach (KeyValuePair<string, List<int>> pair in dictionaryPlots)
                 {
-                    string outputtext = String.Format("{0} ||| {1},{2} - {3},{4}", pair.Key, pair.Value[0], pair.Value[1], pair.Value[2], pair.Value[3]);
-                    sw.WriteLine(outputtext);
+                    string outputText = String.Format("{0} ||| {1},{2} - {3},{4}", pair.Key, pair.Value[0], pair.Value[1], pair.Value[2], pair.Value[3]);
+                    sw.WriteLine(outputText);
 
                     if (pair.Value[0] < 0 || pair.Value[1] < 0)
                     {

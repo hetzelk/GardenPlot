@@ -9,119 +9,119 @@ namespace GardenPlot
 {
     public class MinFence//3
     {
-        Dictionary<string, List<int>> fullplotdictionary;
-        List<int> FinalMaxPlots;
+        Dictionary<string, List<int>> fullPlotDictionary;
+        List<int> finalMaxPlots;
         public MinFence()
         {
-            fullplotdictionary = new Dictionary<string, List<int>>();
-            FinalMaxPlots = new List<int>();
+            fullPlotDictionary = new Dictionary<string, List<int>>();
+            finalMaxPlots = new List<int>();
         }
 
-        public int GetMinimumFence(Dictionary<string, List<int>> dictionaryplots)
+        public int GetMinimumFence(Dictionary<string, List<int>> dictionaryPlots)
         {
-            fullplotdictionary = CreateFullPlotDictionary(dictionaryplots);
-            FinalMaxPlots = GetParameters(fullplotdictionary);
-            int MinFence = CalculateMinimunFence(FinalMaxPlots);
+            fullPlotDictionary = CreateFullPlotDictionary(dictionaryPlots);
+            finalMaxPlots = GetParameters(fullPlotDictionary);
+            int MinFence = CalculateMinimunFence(finalMaxPlots);
             return MinFence;
         }
 
-        public Dictionary<string, List<int>> CreateFullPlotDictionary(Dictionary<string, List<int>> dictionaryplots)
+        public Dictionary<string, List<int>> CreateFullPlotDictionary(Dictionary<string, List<int>> dictionaryPlots)
         {
-            int xwidth = 0;
-            int yheight = 0;
+            int xWidth = 0;
+            int yHeight = 0;
             Dictionary<string, List<int>> plots = new Dictionary<string, List<int>>();
-            foreach (KeyValuePair<string, List<int>> pair in dictionaryplots)
+            foreach (KeyValuePair<string, List<int>> pair in dictionaryPlots)
             {
-                List<int> plotlist = new List<int>();
-                xwidth = pair.Value[0] + pair.Value[2];
-                yheight = pair.Value[1] + pair.Value[3];
-                plotlist.Add(pair.Value[0]);
-                plotlist.Add(pair.Value[1]);
-                plotlist.Add(xwidth);
-                plotlist.Add(yheight);
-                plots.Add(pair.Key, plotlist);
+                List<int> plotList = new List<int>();
+                xWidth = pair.Value[0] + pair.Value[2];
+                yHeight = pair.Value[1] + pair.Value[3];
+                plotList.Add(pair.Value[0]);
+                plotList.Add(pair.Value[1]);
+                plotList.Add(xWidth);
+                plotList.Add(yHeight);
+                plots.Add(pair.Key, plotList);
             }
             return plots;
         }
 
-        public List<int> GetParameters(Dictionary<string, List<int>> fullplotdictionary)
+        public List<int> GetParameters(Dictionary<string, List<int>> fullPlotDictionary)
         {
             List<int> parameters = new List<int>();
 
-            int smallx = GetSmallX(fullplotdictionary);
-            int smally = GetSmallY(fullplotdictionary);
-            int largex = GetLargeX(fullplotdictionary);
-            int largey = GetLargeY(fullplotdictionary);
-            parameters.Add(smallx);
-            parameters.Add(smally);
-            parameters.Add(largex);
-            parameters.Add(largey);
+            int smallX = GetSmallX(fullPlotDictionary);
+            int smallY = GetSmallY(fullPlotDictionary);
+            int largeX = GetLargeX(fullPlotDictionary);
+            int largeY = GetLargeY(fullPlotDictionary);
+            parameters.Add(smallX);
+            parameters.Add(smallY);
+            parameters.Add(largeX);
+            parameters.Add(largeY);
 
             return parameters;
         }
 
-        public int GetLargeX(Dictionary<string, List<int>> fullplots)
+        public int GetLargeX(Dictionary<string, List<int>> fullPlots)
         {
-            int maxx = int.MinValue;
-            foreach (KeyValuePair<string, List<int>> pair in fullplots)
+            int maxX = int.MinValue;
+            foreach (KeyValuePair<string, List<int>> pair in fullPlots)
             {
                 int what = pair.Value[2];
-                if (pair.Value[2] > maxx)
+                if (pair.Value[2] > maxX)
                 {
-                    maxx = pair.Value[2];
+                    maxX = pair.Value[2];
                 }
             }
-            return maxx;
+            return maxX;
         }
 
-        public int GetLargeY(Dictionary<string, List<int>> fullplots)
+        public int GetLargeY(Dictionary<string, List<int>> fullPlots)
         {
-            int maxy = int.MinValue;
-            foreach (KeyValuePair<string, List<int>> pair in fullplots)
+            int maxY = int.MinValue;
+            foreach (KeyValuePair<string, List<int>> pair in fullPlots)
             {
-                if (pair.Value[3] > maxy)
+                if (pair.Value[3] > maxY)
                 {
-                    maxy = pair.Value[3];
+                    maxY = pair.Value[3];
                 }
             }
-            return maxy;
+            return maxY;
         }
 
-        public int GetSmallX(Dictionary<string, List<int>> fullplots)
+        public int GetSmallX(Dictionary<string, List<int>> fullPlots)
         {
-        int smallx = int.MaxValue;
-        foreach (KeyValuePair<string, List<int>> pair in fullplots)
+        int smallX = int.MaxValue;
+        foreach (KeyValuePair<string, List<int>> pair in fullPlots)
         {
-            if (pair.Value[0] < smallx)
+            if (pair.Value[0] < smallX)
             {
-                smallx = pair.Value[0];
+                smallX = pair.Value[0];
             }
         }
-        return smallx;
+        return smallX;
     }
 
-        public int GetSmallY(Dictionary<string, List<int>> fullplots)
+        public int GetSmallY(Dictionary<string, List<int>> fullPlots)
         {
-            int smally = int.MaxValue;
-            foreach (KeyValuePair<string, List<int>> pair in fullplots)
+            int smallY = int.MaxValue;
+            foreach (KeyValuePair<string, List<int>> pair in fullPlots)
             {
-                if (pair.Value[1] < smally)
+                if (pair.Value[1] < smallY)
                 {
-                    smally = pair.Value[1];
+                    smallY = pair.Value[1];
                 }
             }
-            return smally;
+            return smallY;
         }
 
         public int CalculateMinimunFence(List<int> boundaries)
         {
-            int minfence = 0;
-            int xfence = 2 * (boundaries[2] - boundaries[0]);
-            int yfence = 2 * (boundaries[3] - boundaries[1]);
+            int minFence = 0;
+            int xFence = 2 * (boundaries[2] - boundaries[0]);
+            int yFence = 2 * (boundaries[3] - boundaries[1]);
 
-            minfence = xfence + yfence;
+            minFence = xFence + yFence;
 
-            return minfence;
+            return minFence;
         }
 
         public void Writer(string output, int total)

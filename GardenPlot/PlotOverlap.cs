@@ -9,65 +9,65 @@ namespace GardenPlot
 {
     public class PlotOverlap//1
     {
-        Dictionary<string, List<int>> fullplots;
+        Dictionary<string, List<int>> fullPlots;
 
         public PlotOverlap()
         {
-            fullplots = new Dictionary<string, List<int>>();
+            fullPlots = new Dictionary<string, List<int>>();
         }
 
-        public List<string> CheckAllOverlaps(Dictionary<string, List<int>> dictionaryplots)
+        public List<string> CheckAllOverlaps(Dictionary<string, List<int>> dictionaryPlots)
         {
-            List<string> plotoverlaps = new List<string>();
-            fullplots = CreateFullPlotDictionary(dictionaryplots);
-            plotoverlaps = CheckEachPlotOverlap(fullplots);
-            return plotoverlaps;
+            List<string> plotOverlaps = new List<string>();
+            fullPlots = CreateFullPlotDictionary(dictionaryPlots);
+            plotOverlaps = CheckEachPlotOverlap(fullPlots);
+            return plotOverlaps;
         }
 
-        public Dictionary<string, List<int>> CreateFullPlotDictionary(Dictionary<string, List<int>> dictionaryplots)
+        public Dictionary<string, List<int>> CreateFullPlotDictionary(Dictionary<string, List<int>> dictionaryPlots)
         {
-            int xwidth = 0;
-            int yheight = 0;
+            int xWidth = 0;
+            int yHeight = 0;
             Dictionary<string, List<int>> plots = new Dictionary<string, List<int>>();
-            foreach (KeyValuePair<string, List<int>> pair in dictionaryplots)
+            foreach (KeyValuePair<string, List<int>> pair in dictionaryPlots)
             {
-                List<int> plotlist = new List<int>();
-                xwidth = pair.Value[0] + pair.Value[2];
-                yheight = pair.Value[1] + pair.Value[3];
-                plotlist.Add(pair.Value[0]);
-                plotlist.Add(pair.Value[1]);
-                plotlist.Add(xwidth);
-                plotlist.Add(yheight);
-                plots.Add(pair.Key, plotlist);
+                List<int> plotList = new List<int>();
+                xWidth = pair.Value[0] + pair.Value[2];
+                yHeight = pair.Value[1] + pair.Value[3];
+                plotList.Add(pair.Value[0]);
+                plotList.Add(pair.Value[1]);
+                plotList.Add(xWidth);
+                plotList.Add(yHeight);
+                plots.Add(pair.Key, plotList);
             }
             return plots;
         }
 
-        public List<string> CheckEachPlotOverlap(Dictionary<string, List<int>> fullplots)
+        public List<string> CheckEachPlotOverlap(Dictionary<string, List<int>> fullPlots)
         {
             List<string> overlapStrings = new List<string>();
-            foreach (KeyValuePair<string, List<int>> pair in fullplots)
+            foreach (KeyValuePair<string, List<int>> pair in fullPlots)
             {
-                string statement = ChecKBoundaries(fullplots, pair.Key, pair.Value[0], pair.Value[1], pair.Value[2], pair.Value[3]);
+                string statement = CheckBoundaries(fullPlots, pair.Key, pair.Value[0], pair.Value[1], pair.Value[2], pair.Value[3]);
                 overlapStrings.Add(statement);
             }
             return overlapStrings;
         }
 
-        public string ChecKBoundaries(Dictionary<string, List<int>> fullplots, string plot, int x, int y, int w, int h)
+        public string CheckBoundaries(Dictionary<string, List<int>> fullplots, string plot, int x, int y, int w, int h)
         {
             string statement = "";
-            foreach (KeyValuePair<string, List<int>> secondpair in fullplots)
+            foreach (KeyValuePair<string, List<int>> secondPair in fullplots)
             {       
-                if (!(h < secondpair.Value[1] || y > secondpair.Value[3] || w < secondpair.Value[0] || x > secondpair.Value[2]))
+                if (!(h < secondPair.Value[1] || y > secondPair.Value[3] || w < secondPair.Value[0] || x > secondPair.Value[2]))
                 {
-                    if (plot == secondpair.Key)
+                    if (plot == secondPair.Key)
                     {
                         statement = "";
                     }
                     else
                     {
-                        statement = String.Format("plot {0} conflicts with plot {1}", plot, secondpair.Key);
+                        statement = String.Format("plot {0} conflicts with plot {1}", plot, secondPair.Key);
                     }
                 }
             }

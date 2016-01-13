@@ -9,23 +9,23 @@ namespace GardenPlot
 {
     public class TotalFence//2
     {
-        public int GetTotalFence(Dictionary<string, List<int>> dictionaryplots)
+        public int GetTotalFence(Dictionary<string, List<int>> dictionaryPlots)
         {
             int total = 0;
-            foreach(KeyValuePair<string, List<int>> pair in dictionaryplots)
+            foreach(KeyValuePair<string, List<int>> pair in dictionaryPlots)
             {
-                int eachtotal = GetEachFence(pair.Value[2], pair.Value[3]);
-                total += eachtotal;
+                int eachTotal = GetEachFence(pair.Value[2], pair.Value[3]);
+                total += eachTotal;
             }
             return total;
         }
 
         public int GetEachFence(int w, int h)
         {
-            int firsthalf = w * 2;
-            int secondhalf = h * 2;
-            int totalcurrentfence = firsthalf + secondhalf;
-            return totalcurrentfence;
+            int firstHalf = w * 2;
+            int secondHalf = h * 2;
+            int totalCurrentFence = firstHalf + secondHalf;
+            return totalCurrentFence;
         }
 
         public void Writer(string output, int total)

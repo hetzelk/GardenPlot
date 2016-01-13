@@ -9,13 +9,13 @@ namespace GardenPlot
 {
     public class TotalFertilizer//4
     {
-        public float GetTotalFertilizer(Dictionary<string, List<int>> dictionaryplots)
+        public float GetTotalFertilizer(Dictionary<string, List<int>> dictionaryPlots)
         {
             float total = 0;
-            foreach(KeyValuePair<string, List<int>> index in dictionaryplots)
+            foreach(KeyValuePair<string, List<int>> index in dictionaryPlots)
             {
-                float eachamount = GetFertilizerAmount(index.Value[2], index.Value[3]);
-                total += eachamount;
+                float eachAmount = GetFertilizerAmount(index.Value[2], index.Value[3]);
+                total += eachAmount;
             }
             return total;
         }
@@ -27,11 +27,11 @@ namespace GardenPlot
             return fertilizer;
         }
 
-        public void Writer(string output, float totalfert)
+        public void Writer(string output, float totalFertilizer)
         {
             using (StreamWriter sw = new StreamWriter(output))
             {
-                sw.WriteLine("total fertilizer needed = "+ totalfert);
+                sw.WriteLine("total fertilizer needed = "+ totalFertilizer);
             }
         }
     }
